@@ -9,6 +9,9 @@ import java.util.List;
 
 public class CashRegister {
 
+    private static final int FREE_GOODS_FACTOR = 3;
+    private static final int GOODS_NEED_TO_PAY_FACTOR = 2;
+
     public Invoice checkout(Cart cart) {
         List<Goods> allGoods = cart.getAllGoods();
         Invoice invoice = new Invoice();
@@ -27,8 +30,9 @@ public class CashRegister {
 
     private PurchasedGoods covertBuyTwoGetOneForFreeGoods(Goods goods) {
         PurchasedGoods purchasedGoods = (PurchasedGoods) goods;
-        purchasedGoods.setGiftCount(goods.getCount() / 3);
-        purchasedGoods.setTotalPrice(purchasedGoods.getPrice() * ((purchasedGoods.getGiftCount() * 2) + (purchasedGoods.getCount() % 3)));
+        purchasedGoods.setGiftCount(goods.getCount() / FREE_GOODS_FACTOR);
+        purchasedGoods.setTotalPrice(purchasedGoods.getPrice() *
+                ((purchasedGoods.getGiftCount() * GOODS_NEED_TO_PAY_FACTOR) + (purchasedGoods.getCount() % FREE_GOODS_FACTOR)));
         return purchasedGoods;
     }
 
