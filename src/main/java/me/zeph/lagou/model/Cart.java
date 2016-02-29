@@ -12,7 +12,7 @@ public class Cart {
         return allGoods;
     }
 
-    public void addGoods(Goods goods){
+    public void addGoods(Goods goods) {
         allGoods.add(goods);
     }
 }

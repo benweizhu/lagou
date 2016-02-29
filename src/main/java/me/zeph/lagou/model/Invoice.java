@@ -14,7 +14,7 @@ public class Invoice {
         return allPurchasedGoods;
     }
 
-    public void addPurchasedGoods(PurchasedGoods purchasedGoods){
+    public void addPurchasedGoods(PurchasedGoods purchasedGoods) {
         allPurchasedGoods.add(purchasedGoods);
     }
 

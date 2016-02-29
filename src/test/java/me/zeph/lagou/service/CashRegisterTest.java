@@ -9,8 +9,7 @@ import org.junit.Test;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.easymock.EasyMock.expect;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class CashRegisterTest {
 
