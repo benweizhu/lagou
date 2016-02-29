@@ -2,18 +2,20 @@ package me.zeph.lagou.model;
 
 public class Goods {
 
+    private double discountPercentage;
     private String name;
     private int count;
     private double price;
     private boolean isBuyTwoGetOneForFree;
     private boolean isDiscount;
 
-    public Goods(String name, int count, double price, boolean isBuyTwoGetOneForFree, boolean isDiscount) {
+    public Goods(String name, int count, double price, boolean isBuyTwoGetOneForFree, boolean isDiscount, double discountPercentage) {
         this.name = name;
         this.count = count;
         this.price = price;
         this.isBuyTwoGetOneForFree = isBuyTwoGetOneForFree;
         this.isDiscount = isDiscount;
+        this.discountPercentage = discountPercentage;
     }
 
     public String getName() {
@@ -54,5 +56,13 @@ public class Goods {
 
     public void setDiscount(boolean discount) {
         isDiscount = discount;
+    }
+
+    public double getDiscountPercentage() {
+        return discountPercentage;
+    }
+
+    public void setDiscountPercentage(double discountPercentage) {
+        this.discountPercentage = discountPercentage;
     }
 }

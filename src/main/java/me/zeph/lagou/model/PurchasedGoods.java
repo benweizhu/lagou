@@ -2,11 +2,11 @@ package me.zeph.lagou.model;
 
 public class PurchasedGoods extends Goods {
 
+    private int giftCount;
     private double totalPrice;
-    private double savedMoney;
 
-    public PurchasedGoods(String name, int count, double price, boolean isBuyTwoGetOneForFree, boolean isDiscount) {
-        super(name, count, price, isBuyTwoGetOneForFree, isDiscount);
+    public PurchasedGoods(String name, int count, double price, boolean isBuyTwoGetOneForFree, boolean isDiscount, double discountPercentage) {
+        super(name, count, price, isBuyTwoGetOneForFree, isDiscount, discountPercentage);
     }
 
     public double getTotalPrice() {
@@ -18,10 +18,14 @@ public class PurchasedGoods extends Goods {
     }
 
     public double getSavedMoney() {
-        return savedMoney;
+        return getCount() * getPrice() - getTotalPrice();
     }
 
-    public void setSavedMoney(double savedMoney) {
-        this.savedMoney = savedMoney;
+    public int getGiftCount() {
+        return giftCount;
+    }
+
+    public void setGiftCount(int giftCount) {
+        this.giftCount = giftCount;
     }
 }
