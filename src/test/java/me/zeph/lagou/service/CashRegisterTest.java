@@ -40,8 +40,21 @@ public class CashRegisterTest {
     }
 
     @Test
-    public void shouldReturnTotalPrice4WhenBuy4Badminton() throws Exception {
+    public void shouldReturnTotalPrice4WhenBuy5Badminton() throws Exception {
         expect(mockedCart.getAllGoods()).andReturn(newArrayList(new PurchasedGoods("badminton", 5, 1, true, false, 0)));
+
+        easyMockSupport.replayAll();
+        Invoice invoice = cashRegister.checkout(mockedCart);
+        easyMockSupport.verifyAll();
+
+        PurchasedGoods purchasedGoods = invoice.getAllPurchasedGoods().get(0);
+
+        assertEquals(4.0d, purchasedGoods.getTotalPrice(), DELTA_3);
+    }
+
+    @Test
+    public void shouldReturnTotalPrice4WhenBuy6Badminton() throws Exception {
+        expect(mockedCart.getAllGoods()).andReturn(newArrayList(new PurchasedGoods("badminton", 6, 1, true, false, 0)));
 
         easyMockSupport.replayAll();
         Invoice invoice = cashRegister.checkout(mockedCart);
