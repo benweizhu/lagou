@@ -27,7 +27,7 @@ public class CashRegisterTest {
 
     @Test
     public void shouldReturnTotalPrice10Point45AndSavedMoney0Point55WhenBuy2KgApple() throws Exception {
-        expect(mockedCart.getAllGoods()).andReturn(newArrayList(new PurchasedGoods("apple", 2, 5.5d, false, true, 0.95)));
+        expect(mockedCart.getAllGoods()).andReturn(newArrayList(new PurchasedGoods("ITEM000003", "apple", 2, 5.5d, false, true, 0.95)));
 
         easyMockSupport.replayAll();
         Invoice invoice = cashRegister.checkout(mockedCart);
@@ -41,7 +41,7 @@ public class CashRegisterTest {
 
     @Test
     public void shouldReturnTotalPrice4WhenBuy5Badminton() throws Exception {
-        expect(mockedCart.getAllGoods()).andReturn(newArrayList(new PurchasedGoods("badminton", 5, 1, true, false, 0)));
+        expect(mockedCart.getAllGoods()).andReturn(newArrayList(new PurchasedGoods("ITEM000001", "badminton", 5, 1, true, false, 0)));
 
         easyMockSupport.replayAll();
         Invoice invoice = cashRegister.checkout(mockedCart);
@@ -54,7 +54,7 @@ public class CashRegisterTest {
 
     @Test
     public void shouldReturnTotalPrice4WhenBuy6Badminton() throws Exception {
-        expect(mockedCart.getAllGoods()).andReturn(newArrayList(new PurchasedGoods("badminton", 6, 1, true, false, 0)));
+        expect(mockedCart.getAllGoods()).andReturn(newArrayList(new PurchasedGoods("ITEM000001", "badminton", 6, 1, true, false, 0)));
 
         easyMockSupport.replayAll();
         Invoice invoice = cashRegister.checkout(mockedCart);
@@ -67,7 +67,7 @@ public class CashRegisterTest {
 
     @Test
     public void shouldReturnTotalPrice9WhenBuy3Cola() throws Exception {
-        expect(mockedCart.getAllGoods()).andReturn(newArrayList(new PurchasedGoods("cola", 3, 3, false, false, 0)));
+        expect(mockedCart.getAllGoods()).andReturn(newArrayList(new PurchasedGoods("ITEM000005", "cola", 3, 3, false, false, 0)));
 
         easyMockSupport.replayAll();
         Invoice invoice = cashRegister.checkout(mockedCart);

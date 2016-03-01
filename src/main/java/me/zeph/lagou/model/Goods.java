@@ -1,7 +1,7 @@
 package me.zeph.lagou.model;
 
 public class Goods {
-
+    private String id;
     private double discountPercentage;
     private String name;
     private int count;
@@ -9,7 +9,8 @@ public class Goods {
     private boolean isBuyTwoGetOneForFree;
     private boolean isDiscount;
 
-    public Goods(String name, int count, double price, boolean isBuyTwoGetOneForFree, boolean isDiscount, double discountPercentage) {
+    public Goods(String id, String name, int count, double price, boolean isBuyTwoGetOneForFree, boolean isDiscount, double discountPercentage) {
+        this.id = id;
         this.name = name;
         this.count = count;
         this.price = price;

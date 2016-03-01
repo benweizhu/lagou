@@ -5,8 +5,8 @@ public class PurchasedGoods extends Goods {
     private int giftCount;
     private double totalPrice;
 
-    public PurchasedGoods(String name, int count, double price, boolean isBuyTwoGetOneForFree, boolean isDiscount, double discountPercentage) {
-        super(name, count, price, isBuyTwoGetOneForFree, isDiscount, discountPercentage);
+    public PurchasedGoods(String id, String name, int count, double price, boolean isBuyTwoGetOneForFree, boolean isDiscount, double discountPercentage) {
+        super(id, name, count, price, isBuyTwoGetOneForFree, isDiscount, discountPercentage);
     }
 
     public double getTotalPrice() {
