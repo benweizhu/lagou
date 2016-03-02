@@ -13,7 +13,4 @@ public class FreePromotion extends Promotion {
         return freeCount;
     }
 
-    public void setFreeCount(int freeCount) {
-        this.freeCount = freeCount;
-    }
 }

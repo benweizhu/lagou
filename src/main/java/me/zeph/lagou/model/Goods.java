@@ -23,32 +23,20 @@ public class Goods {
         return unit;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public List<Promotion> getPromotionList() {
         return promotionList;
     }
 
-    public void setPromotionList(List<Promotion> promotionList) {
-        this.promotionList = promotionList;
+    public void addPromotion(Promotion promotion) {
+        promotionList.add(promotion);
     }
 
     public Promotion getPromotion() {

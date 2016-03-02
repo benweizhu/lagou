@@ -19,7 +19,7 @@
     "price": "5.5",
     "unit": "斤",
     "discount": {
-      "value": "",
+      "value": "0.95",
       "priority": "2"
     },
     "freeCount": {

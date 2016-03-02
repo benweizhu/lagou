@@ -58,7 +58,7 @@ public class GoodsRepository {
         if (!isNullOrEmpty((String) discount.get(VALUE))) {
             DiscountPromotion promotion = new DiscountPromotion(Integer.valueOf((String) discount.get("priority")),
                     Double.valueOf((String) discount.get(VALUE)));
-            goods.getPromotionList().add(promotion);
+            goods.addPromotion(promotion);
         }
     }
 
@@ -67,7 +67,7 @@ public class GoodsRepository {
         if (!isNullOrEmpty((String) freeCount.get(VALUE))) {
             FreePromotion promotion = new FreePromotion(Integer.valueOf((String) freeCount.get("priority")),
                     Integer.valueOf((String) freeCount.get(VALUE)));
-            goods.getPromotionList().add(promotion);
+            goods.addPromotion(promotion);
         }
     }
 

@@ -20,7 +20,7 @@ public class InvoiceTest {
 
     private PurchasedGoods getApplePurchasedGoods() {
         Goods goods = new Goods("苹果", 5.5d, "斤");
-        goods.getPromotionList().add(new DiscountPromotion(2, 0.95));
+        goods.addPromotion(new DiscountPromotion(2, 0.95));
 
         PurchasedGoods purchasedGoods = new PurchasedGoods(goods, 2);
         purchasedGoods.setTotalPrice(10.45d);
@@ -29,7 +29,7 @@ public class InvoiceTest {
 
     private PurchasedGoods getBadmintonPurchasedGoods() {
         Goods goods = new Goods("羽毛球", 1d, "个");
-        goods.getPromotionList().add(new FreePromotion(1, 1));
+        goods.addPromotion(new FreePromotion(1, 1));
 
         PurchasedGoods purchasedGoods = new PurchasedGoods(goods, 5);
         purchasedGoods.setTotalPrice(4d);

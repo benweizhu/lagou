@@ -12,10 +12,6 @@ public class Promotion implements Comparable<Promotion> {
         return priority;
     }
 
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
-
     @Override
     public int compareTo(Promotion comparedPromotion) {
         int comparePriority = comparedPromotion.getPriority();

@@ -39,7 +39,7 @@ public class GoodsRepositoryTest {
 
     @Test
     public void shouldDiscountPromotionForApple() throws Exception {
-        Promotion promotion = allGoods.get("ITEM000002").getPromotion();
+        Promotion promotion = allGoods.get("ITEM000003").getPromotion();
         assertTrue(promotion instanceof DiscountPromotion);
         assertThat(((DiscountPromotion) promotion).getDiscountPercentage(), is(0.95d));
     }

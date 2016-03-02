@@ -23,7 +23,7 @@ public class CashRegisterTest {
     @Test
     public void shouldReturnTotalPrice10Point45AndSavedMoney0Point55WhenBuy2KgApple() throws Exception {
         PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("apple", 5.5d, "斤"), 2);
-        initPurchasedGoods.getGoods().getPromotionList().add(new DiscountPromotion(2, 0.95));
+        initPurchasedGoods.getGoods().addPromotion(new DiscountPromotion(2, 0.95));
 
         easyMockSupport.replayAll();
         Invoice invoice = cashRegister.checkout(newArrayList(initPurchasedGoods));
@@ -38,7 +38,7 @@ public class CashRegisterTest {
     @Test
     public void shouldReturnTotalPrice4WhenBuy5Badminton() throws Exception {
         PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("badminton", 1, "个"), 5);
-        initPurchasedGoods.getGoods().getPromotionList().add(new FreePromotion(1, 1));
+        initPurchasedGoods.getGoods().addPromotion(new FreePromotion(1, 1));
 
         easyMockSupport.replayAll();
         Invoice invoice = cashRegister.checkout(newArrayList(initPurchasedGoods));
@@ -52,7 +52,7 @@ public class CashRegisterTest {
     @Test
     public void shouldReturnTotalPrice4WhenBuy6Badminton() throws Exception {
         PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("badminton", 1, "个"), 6);
-        initPurchasedGoods.getGoods().getPromotionList().add(new FreePromotion(1, 1));
+        initPurchasedGoods.getGoods().addPromotion(new FreePromotion(1, 1));
 
         easyMockSupport.replayAll();
         Invoice invoice = cashRegister.checkout(newArrayList(initPurchasedGoods));

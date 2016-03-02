@@ -36,11 +36,7 @@ public class PurchasedGoods {
         return count;
     }
 
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public void addCount(int addedCount){
+    public void addCount(int addedCount) {
         this.count = this.count + addedCount;
     }
 
@@ -48,7 +44,4 @@ public class PurchasedGoods {
         return goods;
     }
 
-    public void setGoods(Goods goods) {
-        this.goods = goods;
-    }
 }

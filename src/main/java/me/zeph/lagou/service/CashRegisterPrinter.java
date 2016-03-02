@@ -15,8 +15,8 @@ public class CashRegisterPrinter {
     private static final String NONE_DISCOUNT_MESSAGE_FORMAT = "名称：%s，数量：%d%s，单价：%.2f(元)，小计：%.2f(元)\n";
     private static final String DISCOUNT_MESSAGE_FORMAT = "名称：%s，数量：%d%s，单价：%.2f(元)，小计：%.2f(元)，节省%.2f(元)\n";
     private static final String FREE_ITEM_MESSAGE_FORMAT = "名称：%s，数量：%d%s\n";
-    public static final String TOTAL_PRICE_MESSAGE_FORMAT = "总计：%.2f(元)\n";
-    public static final String TOTAL_SAVED_MONEY_MESSAGE_FORMAT = "节省：%.2f(元)\n";
+    private static final String TOTAL_PRICE_MESSAGE_FORMAT = "总计：%.2f(元)\n";
+    private static final String TOTAL_SAVED_MONEY_MESSAGE_FORMAT = "节省：%.2f(元)\n";
 
     public void print(Invoice invoice) {
         System.out.println(getInvoiceResult(invoice));

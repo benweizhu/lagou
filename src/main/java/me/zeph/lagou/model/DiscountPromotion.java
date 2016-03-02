@@ -13,7 +13,4 @@ public class DiscountPromotion extends Promotion {
         return discountPercentage;
     }
 
-    public void setDiscountPercentage(double discountPercentage) {
-        this.discountPercentage = discountPercentage;
-    }
 }
