@@ -40,6 +40,10 @@ public class PurchasedGoods {
         this.count = count;
     }
 
+    public void addCount(int addedCount){
+        this.count = this.count + addedCount;
+    }
+
     public Goods getGoods() {
         return goods;
     }
