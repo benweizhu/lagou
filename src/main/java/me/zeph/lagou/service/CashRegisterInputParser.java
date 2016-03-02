@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import static com.google.common.collect.Maps.newHashMap;
+import static java.lang.Integer.valueOf;
 
 public class CashRegisterInputParser {
 
@@ -32,16 +33,22 @@ public class CashRegisterInputParser {
         Iterator iterator = ((JSONArray) parser.parse(inputStreamReader)).iterator();
         HashMap<String, PurchasedGoods> purchasedGoodsMap = newHashMap();
         while (iterator.hasNext()) {
-            String[] split = ((String) iterator.next()).split("-");
-            String key = split[KEY_INDEX];
-            int addedCount = split.length > 1 ? Integer.valueOf(split[VALUE_INDEX]) : COUNT;
-            if (purchasedGoodsMap.containsKey(key)) {
-                purchasedGoodsMap.get(key).addCount(addedCount);
-            } else {
-                purchasedGoodsMap.put(key, new PurchasedGoods(goodsRepository.getAllGoods().get(key), addedCount));
-            }
+            String[] keyAndCount = ((String) iterator.next()).split("-");
+            initPurchasedGoods(purchasedGoodsMap, keyAndCount[KEY_INDEX], getAddedCount(keyAndCount));
         }
         return purchasedGoodsMap;
+    }
+
+    private int getAddedCount(String[] split) {
+        return split.length > 1 ? valueOf(split[VALUE_INDEX]) : COUNT;
+    }
+
+    private void initPurchasedGoods(HashMap<String, PurchasedGoods> purchasedGoodsMap, String key, int addedCount) throws Exception {
+        if (purchasedGoodsMap.containsKey(key)) {
+            purchasedGoodsMap.get(key).addCount(addedCount);
+        } else {
+            purchasedGoodsMap.put(key, new PurchasedGoods(goodsRepository.getAllGoods().get(key), addedCount));
+        }
     }
 
 
