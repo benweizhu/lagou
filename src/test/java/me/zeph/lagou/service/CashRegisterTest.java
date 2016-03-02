@@ -25,7 +25,7 @@ public class CashRegisterTest {
 
     @Test
     public void shouldReturnTotalPrice10Point45AndSavedMoney0Point55WhenBuy2KgApple() throws Exception {
-        PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("ITEM000003", "apple", 5.5d), 2);
+        PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("apple", 5.5d), 2);
         initPurchasedGoods.getGoods().getPromotionList().add(new DiscountPromotion(2, 0.95));
         expect(mockedCart.getAllGoods()).andReturn(newArrayList(initPurchasedGoods));
 
@@ -41,7 +41,7 @@ public class CashRegisterTest {
 
     @Test
     public void shouldReturnTotalPrice4WhenBuy5Badminton() throws Exception {
-        PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("ITEM000001", "badminton", 1), 5);
+        PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("badminton", 1), 5);
         expect(mockedCart.getAllGoods()).andReturn(newArrayList(initPurchasedGoods));
         initPurchasedGoods.getGoods().getPromotionList().add(new FreePromotion(1, 1));
 
@@ -56,7 +56,7 @@ public class CashRegisterTest {
 
     @Test
     public void shouldReturnTotalPrice4WhenBuy6Badminton() throws Exception {
-        PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("ITEM000001", "badminton", 1), 6);
+        PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("badminton", 1), 6);
         expect(mockedCart.getAllGoods()).andReturn(newArrayList(initPurchasedGoods));
         initPurchasedGoods.getGoods().getPromotionList().add(new FreePromotion(1, 1));
 
@@ -71,7 +71,7 @@ public class CashRegisterTest {
 
     @Test
     public void shouldReturnTotalPrice9WhenBuy3Cola() throws Exception {
-        PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("ITEM000005", "cola", 3), 3);
+        PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("cola", 3), 3);
         expect(mockedCart.getAllGoods()).andReturn(newArrayList(initPurchasedGoods));
 
         easyMockSupport.replayAll();

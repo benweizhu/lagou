@@ -49,7 +49,7 @@ public class GoodsRepository {
         String id = (String) jsonObject.get(ID);
         String name = (String) jsonObject.get(NAME);
         double price = Double.valueOf((String) jsonObject.get(PRICE));
-        return new Goods(id, name, price);
+        return new Goods(name, price);
     }
 
     private void setDiscountPromotionIfHas(JSONObject jsonObject, Goods goods) {

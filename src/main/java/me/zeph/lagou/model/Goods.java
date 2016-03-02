@@ -7,14 +7,12 @@ import static com.google.common.collect.Lists.newArrayList;
 
 public class Goods {
 
-    private String id;
     private String name;
     private double price;
 
     private List<Promotion> promotionList = newArrayList();
 
-    public Goods(String id, String name, double price) {
-        this.id = id;
+    public Goods(String name, double price) {
         this.name = name;
         this.price = price;
     }
