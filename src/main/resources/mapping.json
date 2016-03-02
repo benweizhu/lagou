@@ -1,0 +1,54 @@
+[
+  {
+    "id": "ITEM000001",
+    "name": "羽毛球",
+    "price": "1",
+    "discount": {
+      "value": "",
+      "priority": "2"
+    },
+    "freeCount": {
+      "value": "1",
+      "priority": "1"
+    }
+  },
+  {
+    "id": "ITEM000002",
+    "name": "苹果",
+    "price": "5.5",
+    "discount": {
+      "value": "0.95",
+      "priority": "2"
+    },
+    "freeCount": {
+      "value": "",
+      "priority": "1"
+    }
+  },
+  {
+    "id": "ITEM000005",
+    "name": "可口可乐",
+    "price": "3",
+    "discount": {
+      "value": "",
+      "priority": "2"
+    },
+    "freeCount": {
+      "value": "1",
+      "priority": "1"
+    }
+  },
+  {
+    "id": "ITEM000007",
+    "name": "ipad",
+    "price": "100",
+    "discount": {
+      "value": "0.95",
+      "priority": "2"
+    },
+    "freeCount": {
+      "value": "1",
+      "priority": "1"
+    }
+  }
+]

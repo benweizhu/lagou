@@ -1,22 +1,22 @@
 package me.zeph.lagou.model;
 
-public class Goods {
-    private String id;
-    private double discountPercentage;
-    private String name;
-    private int count;
-    private double price;
-    private boolean isBuyTwoGetOneForFree;
-    private boolean isDiscount;
+import java.util.Collections;
+import java.util.List;
 
-    public Goods(String id, String name, int count, double price, boolean isBuyTwoGetOneForFree, boolean isDiscount, double discountPercentage) {
+import static com.google.common.collect.Lists.newArrayList;
+
+public class Goods {
+
+    private String id;
+    private String name;
+    private double price;
+
+    private List<Promotion> promotionList = newArrayList();
+
+    public Goods(String id, String name, double price) {
         this.id = id;
         this.name = name;
-        this.count = count;
         this.price = price;
-        this.isBuyTwoGetOneForFree = isBuyTwoGetOneForFree;
-        this.isDiscount = isDiscount;
-        this.discountPercentage = discountPercentage;
     }
 
     public String getName() {
@@ -27,14 +27,6 @@ public class Goods {
         this.name = name;
     }
 
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
     public double getPrice() {
         return price;
     }
@@ -43,27 +35,19 @@ public class Goods {
         this.price = price;
     }
 
-    public boolean isBuyTwoGetOneForFree() {
-        return isBuyTwoGetOneForFree;
+    public List<Promotion> getPromotionList() {
+        return promotionList;
     }
 
-    public void setBuyTwoGetOneForFree(boolean buyTwoGetOneForFree) {
-        isBuyTwoGetOneForFree = buyTwoGetOneForFree;
+    public void setPromotionList(List<Promotion> promotionList) {
+        this.promotionList = promotionList;
     }
 
-    public boolean isDiscount() {
-        return isDiscount;
-    }
-
-    public void setDiscount(boolean discount) {
-        isDiscount = discount;
-    }
-
-    public double getDiscountPercentage() {
-        return discountPercentage;
-    }
-
-    public void setDiscountPercentage(double discountPercentage) {
-        this.discountPercentage = discountPercentage;
+    public Promotion getPromotion() {
+        if (promotionList.isEmpty()) {
+            return null;
+        }
+        Collections.sort(promotionList);
+        return promotionList.get(0);
     }
 }

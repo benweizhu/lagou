@@ -6,13 +6,13 @@ import static com.google.common.collect.Lists.newArrayList;
 
 public class Cart {
 
-    private List<Goods> allGoods = newArrayList();
+    private List<PurchasedGoods> allGoods = newArrayList();
 
-    public List<Goods> getAllGoods() {
+    public List<PurchasedGoods> getAllGoods() {
         return allGoods;
     }
 
-    public void addGoods(Goods goods) {
+    public void addGoods(PurchasedGoods goods) {
         allGoods.add(goods);
     }
 }

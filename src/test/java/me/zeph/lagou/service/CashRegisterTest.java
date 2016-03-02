@@ -1,8 +1,6 @@
 package me.zeph.lagou.service;
 
-import me.zeph.lagou.model.Cart;
-import me.zeph.lagou.model.Invoice;
-import me.zeph.lagou.model.PurchasedGoods;
+import me.zeph.lagou.model.*;
 import org.easymock.EasyMockSupport;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +25,9 @@ public class CashRegisterTest {
 
     @Test
     public void shouldReturnTotalPrice10Point45AndSavedMoney0Point55WhenBuy2KgApple() throws Exception {
-        expect(mockedCart.getAllGoods()).andReturn(newArrayList(new PurchasedGoods("ITEM000003", "apple", 2, 5.5d, false, true, 0.95)));
+        PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("ITEM000003", "apple", 5.5d), 2);
+        initPurchasedGoods.getGoods().getPromotionList().add(new DiscountPromotion(2, 0.95));
+        expect(mockedCart.getAllGoods()).andReturn(newArrayList(initPurchasedGoods));
 
         easyMockSupport.replayAll();
         Invoice invoice = cashRegister.checkout(mockedCart);
@@ -41,7 +41,9 @@ public class CashRegisterTest {
 
     @Test
     public void shouldReturnTotalPrice4WhenBuy5Badminton() throws Exception {
-        expect(mockedCart.getAllGoods()).andReturn(newArrayList(new PurchasedGoods("ITEM000001", "badminton", 5, 1, true, false, 0)));
+        PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("ITEM000001", "badminton", 1), 5);
+        expect(mockedCart.getAllGoods()).andReturn(newArrayList(initPurchasedGoods));
+        initPurchasedGoods.getGoods().getPromotionList().add(new FreePromotion(1, 1));
 
         easyMockSupport.replayAll();
         Invoice invoice = cashRegister.checkout(mockedCart);
@@ -54,7 +56,9 @@ public class CashRegisterTest {
 
     @Test
     public void shouldReturnTotalPrice4WhenBuy6Badminton() throws Exception {
-        expect(mockedCart.getAllGoods()).andReturn(newArrayList(new PurchasedGoods("ITEM000001", "badminton", 6, 1, true, false, 0)));
+        PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("ITEM000001", "badminton", 1), 6);
+        expect(mockedCart.getAllGoods()).andReturn(newArrayList(initPurchasedGoods));
+        initPurchasedGoods.getGoods().getPromotionList().add(new FreePromotion(1, 1));
 
         easyMockSupport.replayAll();
         Invoice invoice = cashRegister.checkout(mockedCart);
@@ -67,7 +71,8 @@ public class CashRegisterTest {
 
     @Test
     public void shouldReturnTotalPrice9WhenBuy3Cola() throws Exception {
-        expect(mockedCart.getAllGoods()).andReturn(newArrayList(new PurchasedGoods("ITEM000005", "cola", 3, 3, false, false, 0)));
+        PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("ITEM000005", "cola", 3), 3);
+        expect(mockedCart.getAllGoods()).andReturn(newArrayList(initPurchasedGoods));
 
         easyMockSupport.replayAll();
         Invoice invoice = cashRegister.checkout(mockedCart);
