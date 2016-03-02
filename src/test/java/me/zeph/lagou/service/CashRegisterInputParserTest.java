@@ -67,10 +67,10 @@ public class CashRegisterInputParserTest {
     }
 
     private void initGoods() {
-        goods.put("ITEM000001", new Goods("羽毛球", 1d));
-        goods.put("ITEM000002", new Goods("苹果", 5.5d));
-        goods.put("ITEM000005", new Goods("可口可乐", 3d));
-        goods.put("ITEM000007", new Goods("ipad", 100d));
+        goods.put("ITEM000001", new Goods("羽毛球", 1d, "个"));
+        goods.put("ITEM000002", new Goods("苹果", 5.5d, "斤"));
+        goods.put("ITEM000005", new Goods("可口可乐", 3d, "瓶"));
+        goods.put("ITEM000007", new Goods("ipad", 100d, "个"));
     }
 
 

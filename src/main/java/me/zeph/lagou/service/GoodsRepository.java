@@ -19,6 +19,7 @@ public class GoodsRepository {
     private static final String ID = "id";
     private static final String NAME = "name";
     private static final String PRICE = "price";
+    private static final String UNIT = "unit";
     private static final String DISCOUNT = "discount";
     private static final String VALUE = "value";
     private static final String FREE_COUNT = "freeCount";
@@ -33,7 +34,7 @@ public class GoodsRepository {
 
     public Map<String, Goods> getAllGoods() throws Exception {
         InputStreamReader inputStreamReader = new InputStreamReader(getClass().getResourceAsStream(filePath));
-        Iterator iterator =  ((JSONArray) parser.parse(inputStreamReader)).iterator();
+        Iterator iterator = ((JSONArray) parser.parse(inputStreamReader)).iterator();
         Map<String, Goods> goodsMap = newHashMap();
         while (iterator.hasNext()) {
             JSONObject jsonObject = (JSONObject) iterator.next();
@@ -46,10 +47,10 @@ public class GoodsRepository {
     }
 
     public Goods initGoods(JSONObject jsonObject) {
-        String id = (String) jsonObject.get(ID);
         String name = (String) jsonObject.get(NAME);
         double price = Double.valueOf((String) jsonObject.get(PRICE));
-        return new Goods(name, price);
+        String unit = (String) jsonObject.get(UNIT);
+        return new Goods(name, price, unit);
     }
 
     private void setDiscountPromotionIfHas(JSONObject jsonObject, Goods goods) {

@@ -7,8 +7,6 @@ import static com.google.common.collect.Lists.newArrayList;
 public class Invoice {
 
     private List<PurchasedGoods> allPurchasedGoods = newArrayList();
-    private double totalPrice;
-    private double savedMoney;
 
     public List<PurchasedGoods> getAllPurchasedGoods() {
         return allPurchasedGoods;
@@ -19,18 +17,19 @@ public class Invoice {
     }
 
     public double getTotalPrice() {
+        double totalPrice = 0;
+        for (PurchasedGoods purchasedGood : allPurchasedGoods) {
+            totalPrice += purchasedGood.getTotalPrice();
+        }
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
     public double getSavedMoney() {
+        double savedMoney = 0;
+        for (PurchasedGoods purchasedGood : allPurchasedGoods) {
+            savedMoney += purchasedGood.getSavedMoney();
+        }
         return savedMoney;
     }
 
-    public void setSavedMoney(double savedMoney) {
-        this.savedMoney = savedMoney;
-    }
 }

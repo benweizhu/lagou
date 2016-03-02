@@ -17,7 +17,7 @@ public class CartTest {
 
     @Test
     public void shouldContainsGoodsWhenAddToCart() throws Exception {
-        cart.addGoods(new PurchasedGoods(new Goods("apple", 5.5d), 1));
+        cart.addGoods(new PurchasedGoods(new Goods("apple", 5.5d, "斤"), 1));
         assertThat(cart.getAllGoods().isEmpty(), is(false));
     }
 }

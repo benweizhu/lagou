@@ -17,6 +17,8 @@ public class CashRegisterInputParser {
     private static final int COUNT = 1;
     private static final int KEY_INDEX = 0;
     private static final int VALUE_INDEX = 1;
+    private static final String SPLIT_SYMBOL = "-";
+
     private JSONParser parser;
     private String filePath;
 
@@ -33,7 +35,7 @@ public class CashRegisterInputParser {
         Iterator iterator = ((JSONArray) parser.parse(inputStreamReader)).iterator();
         HashMap<String, PurchasedGoods> purchasedGoodsMap = newHashMap();
         while (iterator.hasNext()) {
-            String[] keyAndCount = ((String) iterator.next()).split("-");
+            String[] keyAndCount = ((String) iterator.next()).split(SPLIT_SYMBOL);
             initPurchasedGoods(purchasedGoodsMap, keyAndCount[KEY_INDEX], getAddedCount(keyAndCount));
         }
         return purchasedGoodsMap;
