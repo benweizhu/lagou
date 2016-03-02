@@ -14,12 +14,12 @@
     }
   },
   {
-    "id": "ITEM000002",
+    "id": "ITEM000003",
     "name": "苹果",
     "price": "5.5",
     "unit": "斤",
     "discount": {
-      "value": "0.95",
+      "value": "",
       "priority": "2"
     },
     "freeCount": {

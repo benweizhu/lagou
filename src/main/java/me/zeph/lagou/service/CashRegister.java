@@ -1,6 +1,9 @@
 package me.zeph.lagou.service;
 
-import me.zeph.lagou.model.*;
+import me.zeph.lagou.model.DiscountPromotion;
+import me.zeph.lagou.model.FreePromotion;
+import me.zeph.lagou.model.Invoice;
+import me.zeph.lagou.model.PurchasedGoods;
 
 import java.util.List;
 
@@ -8,8 +11,7 @@ public class CashRegister {
 
     private static final int GOODS_NEED_TO_PAY_FACTOR = 2;
 
-    public Invoice checkout(Cart cart) {
-        List<PurchasedGoods> allGoods = cart.getAllGoods();
+    public Invoice checkout(List<PurchasedGoods> allGoods) {
         Invoice invoice = new Invoice();
         for (PurchasedGoods goods : allGoods) {
             PurchasedGoods purchasedGoods = covertNormalGoods(goods);

@@ -6,20 +6,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static org.easymock.EasyMock.expect;
 import static org.junit.Assert.assertEquals;
 
 public class CashRegisterTest {
 
     private static final double DELTA_3 = 0.001;
     private EasyMockSupport easyMockSupport;
-    private Cart mockedCart;
     private CashRegister cashRegister;
 
     @Before
     public void setUp() throws Exception {
         easyMockSupport = new EasyMockSupport();
-        mockedCart = easyMockSupport.createStrictMock(Cart.class);
         cashRegister = new CashRegister();
     }
 
@@ -27,10 +24,9 @@ public class CashRegisterTest {
     public void shouldReturnTotalPrice10Point45AndSavedMoney0Point55WhenBuy2KgApple() throws Exception {
         PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("apple", 5.5d, "斤"), 2);
         initPurchasedGoods.getGoods().getPromotionList().add(new DiscountPromotion(2, 0.95));
-        expect(mockedCart.getAllGoods()).andReturn(newArrayList(initPurchasedGoods));
 
         easyMockSupport.replayAll();
-        Invoice invoice = cashRegister.checkout(mockedCart);
+        Invoice invoice = cashRegister.checkout(newArrayList(initPurchasedGoods));
         easyMockSupport.verifyAll();
 
         PurchasedGoods purchasedGoods = invoice.getAllPurchasedGoods().get(0);
@@ -42,11 +38,10 @@ public class CashRegisterTest {
     @Test
     public void shouldReturnTotalPrice4WhenBuy5Badminton() throws Exception {
         PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("badminton", 1, "个"), 5);
-        expect(mockedCart.getAllGoods()).andReturn(newArrayList(initPurchasedGoods));
         initPurchasedGoods.getGoods().getPromotionList().add(new FreePromotion(1, 1));
 
         easyMockSupport.replayAll();
-        Invoice invoice = cashRegister.checkout(mockedCart);
+        Invoice invoice = cashRegister.checkout(newArrayList(initPurchasedGoods));
         easyMockSupport.verifyAll();
 
         PurchasedGoods purchasedGoods = invoice.getAllPurchasedGoods().get(0);
@@ -57,11 +52,10 @@ public class CashRegisterTest {
     @Test
     public void shouldReturnTotalPrice4WhenBuy6Badminton() throws Exception {
         PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("badminton", 1, "个"), 6);
-        expect(mockedCart.getAllGoods()).andReturn(newArrayList(initPurchasedGoods));
         initPurchasedGoods.getGoods().getPromotionList().add(new FreePromotion(1, 1));
 
         easyMockSupport.replayAll();
-        Invoice invoice = cashRegister.checkout(mockedCart);
+        Invoice invoice = cashRegister.checkout(newArrayList(initPurchasedGoods));
         easyMockSupport.verifyAll();
 
         PurchasedGoods purchasedGoods = invoice.getAllPurchasedGoods().get(0);
@@ -72,10 +66,9 @@ public class CashRegisterTest {
     @Test
     public void shouldReturnTotalPrice9WhenBuy3Cola() throws Exception {
         PurchasedGoods initPurchasedGoods = new PurchasedGoods(new Goods("cola", 3, "瓶"), 3);
-        expect(mockedCart.getAllGoods()).andReturn(newArrayList(initPurchasedGoods));
 
         easyMockSupport.replayAll();
-        Invoice invoice = cashRegister.checkout(mockedCart);
+        Invoice invoice = cashRegister.checkout(newArrayList(initPurchasedGoods));
         easyMockSupport.verifyAll();
 
         PurchasedGoods purchasedGoods = invoice.getAllPurchasedGoods().get(0);
