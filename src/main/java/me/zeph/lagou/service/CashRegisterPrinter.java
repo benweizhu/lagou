@@ -1,9 +1,6 @@
 package me.zeph.lagou.service;
 
-import me.zeph.lagou.model.DiscountPromotion;
-import me.zeph.lagou.model.FreePromotion;
-import me.zeph.lagou.model.Invoice;
-import me.zeph.lagou.model.PurchasedGoods;
+import me.zeph.lagou.model.*;
 
 import java.util.List;
 
@@ -41,14 +38,19 @@ public class CashRegisterPrinter {
             String unit = purchasedGood.getGoods().getUnit();
             double price = purchasedGood.getGoods().getPrice();
             double totalPrice = purchasedGood.getTotalPrice();
-            String item = format(NONE_DISCOUNT_MESSAGE_FORMAT, name, count, unit, price, totalPrice);
-            if (purchasedGood.getGoods().getPromotion() instanceof DiscountPromotion) {
-                item = format(DISCOUNT_MESSAGE_FORMAT, name, count, unit, price, totalPrice, purchasedGood.getSavedMoney());
-            }
-            stringBuffer.append(item);
+            double savedMoney = purchasedGood.getSavedMoney();
+            Promotion promotion = purchasedGood.getGoods().getPromotion();
+            stringBuffer.append(getFormatPurchaseGoodsListMessage(name, count, unit, price, totalPrice, savedMoney, promotion));
         }
         stringBuffer.append("----------------------\n");
         return stringBuffer.toString();
+    }
+
+    private String getFormatPurchaseGoodsListMessage(String name, int count, String unit, double price,
+                                                     double totalPrice, double savedMoney, Promotion promotion) {
+        return promotion instanceof DiscountPromotion ?
+                format(DISCOUNT_MESSAGE_FORMAT, name, count, unit, price, totalPrice, savedMoney) :
+                format(NONE_DISCOUNT_MESSAGE_FORMAT, name, count, unit, price, totalPrice);
     }
 
     private String getInvoiceFreeGoodsList(Invoice invoice) {

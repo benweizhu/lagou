@@ -38,9 +38,12 @@ public class GoodsRepository {
         Map<String, Goods> goodsMap = newHashMap();
         while (iterator.hasNext()) {
             JSONObject jsonObject = (JSONObject) iterator.next();
+
             Goods goods = initGoods(jsonObject);
+
             setFreePromotionIfHas(jsonObject, goods);
             setDiscountPromotionIfHas(jsonObject, goods);
+
             goodsMap.put((String) jsonObject.get(ID), goods);
         }
         return goodsMap;
