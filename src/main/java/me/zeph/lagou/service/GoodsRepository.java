@@ -46,7 +46,7 @@ public class GoodsRepository {
         return goodsMap;
     }
 
-    public Goods initGoods(JSONObject jsonObject) {
+    private Goods initGoods(JSONObject jsonObject) {
         String name = (String) jsonObject.get(NAME);
         double price = Double.valueOf((String) jsonObject.get(PRICE));
         String unit = (String) jsonObject.get(UNIT);
